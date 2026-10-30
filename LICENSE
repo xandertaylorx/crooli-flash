@@ -1,0 +1,24 @@
+Crooli Flash — Source-available licence
+
+Copyright (c) Crooli. All rights reserved.
+
+This repository is public so that anyone can read exactly what Crooli Flash does on their
+computer. It is not open source.
+
+You may:
+  - read, audit and study the source code;
+  - install and use the official builds that Crooli publishes, free of charge, for any purpose;
+  - report issues and security problems.
+
+You may not, without written permission from Crooli:
+  - copy, modify, merge, publish, distribute, sublicense or sell the source code or any part of it;
+  - publish builds of this software or of anything derived from it;
+  - use the Crooli name, logo or Crooli Sans artwork to describe another product.
+
+The Crooli Sans typeface bundled in src/renderer/assets/fonts is licensed separately under the
+SIL Open Font License 1.1 (see OFL.txt in that folder).
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. WRITING TO A DRIVE ERASES ITS CONTENTS. IN NO EVENT SHALL CROOLI BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, INCLUDING LOSS OF DATA, ARISING FROM THE USE OF THE SOFTWARE.

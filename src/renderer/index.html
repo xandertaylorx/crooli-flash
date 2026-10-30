@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; script-src 'self'" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Crooli Flash</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="glow" aria-hidden="true"></div>
+
+    <div class="app">
+      <aside class="side">
+        <div class="brand">
+          <img src="assets/icon.svg" alt="" width="34" height="34" />
+          <div>
+            <strong>Flash</strong>
+            <small>by Crooli</small>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Tools">
+          <span class="nav__pill" aria-hidden="true"></span>
+          <button type="button" data-view="flash" class="is-active">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3 5 13.5h6L10 21l8-10.5h-6L13 3Z" /></svg>
+            Flash
+          </button>
+          <button type="button" data-view="format">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="3" /><path d="M9 8h6M9 12h6" /></svg>
+            Format
+          </button>
+          <button type="button" data-view="verify">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 5 6.2v5.1c0 4.2 2.8 7.4 7 9.2 4.2-1.8 7-5 7-9.2V6.2l-7-2.7Z" /><path d="m9 12 2.2 2.2L15.5 10" /></svg>
+            Verify
+          </button>
+        </nav>
+
+        <div class="side__foot">
+          <a href="https://crooli.com/flash" data-link>crooli.com/flash</a>
+          <span id="version"></span>
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="drag" aria-hidden="true"></div>
+        <div id="stage" class="stage"></div>
+      </main>
+    </div>
+
+    <div class="drop" id="drop" aria-hidden="true">
+      <div>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" /><circle cx="12" cy="12" r="2.4" /></svg>
+        <strong>Drop to choose this image</strong>
+      </div>
+    </div>
+
+    <div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" hidden>
+      <div class="sheet__card">
+        <div class="sheet__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 4 3.5 19h17L12 4Z" /><path d="M12 10v4.2M12 16.8v.1" /></svg>
+        </div>
+        <h2 id="sheet-title"></h2>
+        <p id="sheet-body"></p>
+        <div class="sheet__actions">
+          <button type="button" class="btn btn--ghost" id="sheet-cancel">Cancel</button>
+          <button type="button" class="btn btn--danger" id="sheet-confirm"></button>
+        </div>
+      </div>
+    </div>
+
+    <script src="dev-mock.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
