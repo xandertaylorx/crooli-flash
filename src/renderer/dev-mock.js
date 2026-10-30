@@ -24,6 +24,9 @@ if (!window.flash) {
     inspectImage: async () => ({ error: 'That is not a disk image. Choose an .iso or .img file.' }),
     pathForFile: () => '',
     openExternal: () => {},
+    onUpdate: (cb) => q.has('update') && setTimeout(() => cb({ state: 'available', version: '1.0.2' }), 800),
+    currentUpdate: async () => null,
+    installUpdate: async () => {},
     cancel: async () => (cancelled = true),
     onProgress: (cb) => listeners.event.push(cb),
     start: async (job) => {

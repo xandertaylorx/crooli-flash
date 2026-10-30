@@ -163,6 +163,28 @@ body.win .side {
   padding: 0 8px 26px;
 }
 
+.usbmark {
+  flex: none;
+  width: 34px;
+  height: 34px;
+  background: currentColor;
+  -webkit-mask: url("assets/usb.svg") center / contain no-repeat;
+  mask: url("assets/usb.svg") center / contain no-repeat;
+  transform: scale(0.8);
+}
+
+.byline {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+}
+
+.byline svg {
+  width: 17px;
+  height: 17px;
+}
+
 .brand strong {
   display: block;
   font-size: 17px;
@@ -233,6 +255,86 @@ body.win .side {
 .nav button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+.update {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 10px;
+  margin: auto 0 14px;
+  padding: 12px 12px 14px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--signal-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--signal) 35%, transparent);
+  animation: pop 500ms var(--ease) both;
+  -webkit-app-region: no-drag;
+}
+
+.update:not([hidden]) + .side__foot {
+  margin-top: 0;
+}
+
+.update__text strong,
+.update__text small {
+  display: block;
+}
+
+.update__text strong {
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.25;
+}
+
+.update__text small {
+  color: var(--soft);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.update__btn {
+  height: 28px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--btn-bg);
+  color: var(--btn-ink);
+  font-size: 12.5px;
+  font-weight: 650;
+  transition: transform 250ms var(--ease);
+}
+
+.update__btn:active {
+  transform: scale(0.95);
+}
+
+.update__btn:disabled {
+  opacity: 0.4;
+}
+
+.update__bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: transparent;
+}
+
+.update__bar i {
+  display: block;
+  height: 100%;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 200ms linear;
+}
+
+.update[data-state="error"] {
+  background: var(--danger-soft);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--danger) 35%, transparent);
 }
 
 .side__foot {

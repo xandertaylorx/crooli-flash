@@ -18,5 +18,8 @@ contextBridge.exposeInMainWorld('flash', {
   start: (job) => ipcRenderer.invoke('job:start', job),
   cancel: () => ipcRenderer.invoke('job:cancel'),
   onProgress: subscribe('job:event'),
+  onUpdate: subscribe('update:event'),
+  currentUpdate: () => ipcRenderer.invoke('update:current'),
+  installUpdate: () => ipcRenderer.invoke('update:install'),
   openExternal: (url) => ipcRenderer.invoke('app:open', url),
 });

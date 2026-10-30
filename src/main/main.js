@@ -6,6 +6,7 @@ const os = require('os');
 const path = require('path');
 const { listDrives } = require('./drives');
 const { runElevated, wasDeclined } = require('./elevate');
+const updater = require('./updater');
 
 const isMac = process.platform === 'darwin';
 const isDev = process.env.CROOLI_FLASH_DEV === '1';
@@ -233,10 +234,16 @@ ipcMain.handle('image:pick', async () => {
 });
 ipcMain.handle('job:start', (_event, request) => startJob(request || {}));
 ipcMain.handle('job:cancel', () => cancelJob());
+ipcMain.handle('update:current', () => updater.current());
+ipcMain.handle('update:install', () => updater.install());
 
 app.whenReady().then(() => {
   createWindow();
   refreshDrives();
+  updater.start({
+    notify: (event) => win && !win.isDestroyed() && win.webContents.send('update:event', event),
+    allowed: () => !activeJob,
+  });
   setInterval(() => {
     if (win && win.isVisible() && !activeJob) refreshDrives();
   }, 2500);

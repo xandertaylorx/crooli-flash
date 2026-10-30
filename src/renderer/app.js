@@ -663,6 +663,43 @@ window.addEventListener('drop', async (event) => {
   if (file) chooseImage(await api.inspectImage(api.pathForFile(file)));
 });
 
+/* ------------------------------------------------------------- updates */
+
+const update = document.getElementById('update');
+const updateFill = document.getElementById('update-fill');
+const updateTitle = document.getElementById('update-title');
+const updateSub = document.getElementById('update-sub');
+const updateBtn = document.getElementById('update-btn');
+
+function showUpdate(event) {
+  if (!event) return;
+  update.hidden = false;
+  update.dataset.state = event.state;
+  updateBtn.hidden = event.state !== 'available' && event.state !== 'error';
+  updateBtn.disabled = !!state.job;
+  if (event.state === 'available') {
+    updateTitle.textContent = `Version ${event.version} is out`;
+    updateSub.textContent = 'Updates in a few seconds.';
+    updateBtn.textContent = 'Update';
+    updateFill.style.transform = 'scaleX(0)';
+  } else if (event.state === 'downloading') {
+    updateTitle.textContent = 'Downloading update';
+    updateSub.textContent = `${Math.round((event.fraction || 0) * 100)}%`;
+    updateFill.style.transform = `scaleX(${event.fraction || 0})`;
+  } else if (event.state === 'installing') {
+    updateTitle.textContent = 'Restarting';
+    updateSub.textContent = 'Crooli Flash will reopen on its own.';
+    updateFill.style.transform = 'scaleX(1)';
+  } else if (event.state === 'error') {
+    updateTitle.textContent = 'Update did not finish';
+    updateSub.textContent = event.message || 'Try again in a moment.';
+    updateBtn.textContent = 'Retry';
+  }
+}
+
+updateBtn.addEventListener('click', () => api.installUpdate());
+api.onUpdate(showUpdate);
+
 /* ------------------------------------------------------------- start */
 
 (async function init() {
@@ -676,4 +713,5 @@ window.addEventListener('drop', async (event) => {
     if (!state.job) refresh();
   });
   buildView();
+  showUpdate(await api.currentUpdate());
 })();
