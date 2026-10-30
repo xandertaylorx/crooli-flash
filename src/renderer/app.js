@@ -360,6 +360,7 @@ function formatView() {
 function buildView() {
   syncers.length = 0;
   driveLists.clear();
+  stage.parentElement.scrollTop = 0;
   stage.replaceChildren(state.view === 'format' ? formatView() : imageAndDriveView(state.view));
   refresh();
 }
@@ -516,6 +517,7 @@ function buildJob() {
   r.actions.append(r.cancel);
   r.root.append(r.ring, r.title, r.text, r.chips, r.stats, r.actions);
 
+  stage.parentElement.scrollTop = 0;
   stage.replaceChildren(r.root);
   document.querySelectorAll('.nav button').forEach((button) => (button.disabled = true));
   paintJob();

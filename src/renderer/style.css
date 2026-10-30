@@ -359,7 +359,9 @@ body.win .side {
 .main {
   position: relative;
   min-width: 0;
+  overflow-x: hidden;
   overflow-y: auto;
+  scrollbar-gutter: stable;
 }
 
 .drag {
@@ -372,6 +374,7 @@ body.win .side {
 }
 
 .stage {
+  overflow: clip;
   padding: 50px 44px 32px;
   max-width: 760px;
 }
@@ -1103,10 +1106,8 @@ body.win .side {
 }
 
 .job.is-ok .ring__halo {
-  background: radial-gradient(closest-side, var(--success), transparent);
-  filter: blur(26px);
-  opacity: 0.35;
-  animation: breathe 3s ease-in-out infinite alternate;
+  animation: none;
+  opacity: 0;
 }
 
 @keyframes spin {
@@ -1136,6 +1137,8 @@ body.win .side {
 
 .job.is-ok .ring__bar {
   stroke: var(--success);
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
 }
 
 .job.is-bad .ring__bar {
@@ -1219,6 +1222,14 @@ body.win .side {
 .job.is-ok .ring__icon {
   display: block;
   color: var(--success);
+  animation: tick-pop 600ms var(--ease) both;
+}
+
+@keyframes tick-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
 }
 
 .job.is-bad .ring__icon {
@@ -1237,7 +1248,8 @@ body.win .side {
   inset: 0;
   border-radius: 50%;
   box-shadow: 0 0 0 2px var(--success);
-  animation: ripple 1.4s ease-out 1;
+  opacity: 0;
+  animation: ripple 1.4s ease-out 1 both;
 }
 
 @keyframes ripple {

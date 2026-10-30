@@ -1,7 +1,7 @@
 {
   "name": "crooli-flash",
   "productName": "Crooli Flash",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A calm, fast USB tool for Mac and Windows. Flash an ISO, verify it, or format a drive.",
   "author": "Crooli <info@tizzle.org> (https://crooli.com)",
   "homepage": "https://crooli.com/flash",
